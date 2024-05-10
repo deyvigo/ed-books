@@ -16,7 +16,7 @@ class UserModel:
       response = cursor.fetchall()
       return response
     except:
-      return { "error": "Error al consultar la tabla user"}
+      return jsonify({ "error": "Error al consultar la tabla user"})
     
   def post_one_user(self, username, password, name, last_name):
     cursor = self.db.cursor()
@@ -26,5 +26,4 @@ class UserModel:
       self.db.commit()
       return jsonify({ "last_row_id": cursor.lastrowid, "rowcount": cursor.rowcount }), 200
     except:
-      return { "error": "Error al crear el usuario" }
-
+      return jsonify({ "error": "Error al crear el usuario" })
