@@ -20,6 +20,15 @@ class Database:
           last_name varchar(20)  not null
         );
       """)
+      cursor.execute("""
+        create table if not exists book
+        (
+          id_book       integer auto_increment primary key,
+          autor         varchar(60) not null,
+          description   varchar(255) not null,
+          url_img       varchar(255)
+        );
+      """)
     except Exception as e:
       print(f"Error durante la creación de las tablas: {e}")
     finally:
