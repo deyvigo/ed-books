@@ -18,11 +18,12 @@ class UserModel:
     except:
       return jsonify({ "error": "Error al consultar la tabla user"})
     
-  def post_one_user(self, username, password, name, last_name):
+  def post_one_user(self, username, password, name):
     cursor = self.db.cursor()
     try:
-      query = "INSERT INTO user (username, password, name, last_name) VALUE (%s,%s,%s,%s);"
-      cursor.execute(query, (username, password, name, last_name))
+      query = "INSERT INTO user (username, password, name) VALUE (%s,%s,%s);"
+      cursor.execute(query, (username, password, name))
+      print(username, password, name)
       self.db.commit()
       return jsonify({ "last_row_id": cursor.lastrowid, "rowcount": cursor.rowcount }), 200
     except:
