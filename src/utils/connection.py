@@ -11,13 +11,45 @@ class Database:
     try:
       cursor = db.cursor()
       cursor.execute("""
+        create table if not exists autor
+        (
+          id_autor  int auto_increment
+            primary key,
+          name      varchar(100) null,
+          last_name varchar(100) null
+        );
+      """)
+      cursor.execute("""
         create table if not exists book
         (
           id_book     int auto_increment
             primary key,
-          autor       varchar(200) not null,
-          description text         not null,
-          url_img     text         not null
+          id_autor    int  null,
+          description text not null,
+          url_img     text not null,
+          constraint book_autor_id_autor_fk
+            foreign key (id_autor) references autor (id_autor)
+        );
+      """)
+      cursor.execute("""
+        create table if not exists genre
+        (
+          id_genre   int auto_increment
+            primary key,
+          genre_name varchar(100) null
+        );
+      """)
+      cursor.execute("""
+        create table if not exists book_genre
+        (
+          id_book_genre int auto_increment
+            primary key,
+          id_book       int not null,
+          id_genre      int not null,
+          constraint book_genre_book_id_book_fk
+            foreign key (id_book) references book (id_book),
+          constraint book_genre_genre_id_genre_fk
+            foreign key (id_genre) references genre (id_genre)
         );
       """)
       cursor.execute("""
