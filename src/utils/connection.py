@@ -13,7 +13,7 @@ class Database:
       cursor.execute("""
         create table if not exists author
         (
-          id_autor  int auto_increment
+          id_author  int auto_increment
             primary key,
           name      varchar(200) null
         );
@@ -23,11 +23,11 @@ class Database:
         (
           id_book     int auto_increment
             primary key,
-          id_autor    int  null,
+          id_author    int  null,
           description text not null,
           url_img     text not null,
-          constraint book_autor_id_autor_fk
-            foreign key (id_autor) references autor (id_autor)
+          constraint book_author_id_author_fk
+            foreign key (id_author) references author (id_author)
         );
       """)
       cursor.execute("""

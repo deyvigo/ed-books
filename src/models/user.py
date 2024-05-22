@@ -16,7 +16,7 @@ class UserModel:
       response = cursor.fetchall()
       return response
     except:
-      return jsonify({ "error": "Error al consultar la tabla user"})
+      return { "error": "Error al consultar la tabla user"} # <-- devolver objeto no json
     
   def post_one_user(self, username, password, name):
     cursor = self.db.cursor()
