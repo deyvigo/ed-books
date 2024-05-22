@@ -14,7 +14,7 @@ class BookModel:
     try:
       cursor.execute("SELECT * FROM book;")
       response = cursor.fetchall()
-      return response
+      return jsonify({ 'data': response })
     except:
       return jsonify({ "error": "Error al consultar la tabla book" })
 

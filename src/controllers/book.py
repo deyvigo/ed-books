@@ -5,7 +5,7 @@ class BookController:
   @staticmethod
   def get_all_book():
     response = BookModel().get_all_book()
-    return jsonify({ 'data': response })
+    return response
 
   @staticmethod
   def regist_one_book():
