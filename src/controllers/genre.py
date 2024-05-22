@@ -5,8 +5,7 @@ class GenreController:
   @staticmethod
   def get_all_genre():
     response = GenreModel().get_all_genre()
-    return jsonify({ 'data': response })
-
+    return response
   @staticmethod
   def post_one_genre():
     data = request.json

@@ -14,7 +14,7 @@ class GenreModel:
     try:
       cursor.execute("SELECT * FROM genre;")
       response = cursor.fetchall()
-      return response
+      return jsonify({ 'data': response })
     except:
       return jsonify({ "error": "Error al consultar la tabla genre" })
     
