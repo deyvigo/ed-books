@@ -10,6 +10,21 @@ class Database:
     db = self.connection()
     try:
       cursor = db.cursor()
+      cursor.execute("SHOW TABLES;")
+      db_tables = cursor.fetchall()
+      if (db_tables.__len__() > 0):
+        print("Las tablas ya están creadas.")
+      else:
+        self.create_tables()
+    except Exception as e:
+      print(f"Error durante la creación de las tablas: {e}")
+    finally:
+      db.close()
+
+  def create_tables (self):
+    db = self.connection()
+    try:
+      cursor = db.cursor()
       cursor.execute("""
         create table if not exists author
         (
@@ -26,6 +41,7 @@ class Database:
           id_author    int  null,
           description text not null,
           url_img     text not null,
+          name        text not null,
           constraint book_author_id_author_fk
             foreign key (id_author) references author (id_author)
         );
