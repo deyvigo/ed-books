@@ -25,6 +25,6 @@ class UserModel:
       cursor.execute(query, (username, password, name))
       print(username, password, name)
       self.db.commit()
-      return jsonify({ "last_row_id": cursor.lastrowid, "rowcount": cursor.rowcount }), 200
+      return jsonify({ "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }), 200
     except:
       return jsonify({ "error": "Error al crear el usuario" }), 500

@@ -11,12 +11,11 @@ class Database:
     try:
       cursor = db.cursor()
       cursor.execute("""
-        create table if not exists autor
+        create table if not exists author
         (
           id_autor  int auto_increment
             primary key,
-          name      varchar(100) null,
-          last_name varchar(100) null
+          name      varchar(200) null
         );
       """)
       cursor.execute("""
