@@ -1,30 +1,30 @@
 from utils.connection import Database
 from flask import jsonify
 
-class UserModel:
+class BookModel:
   def __init__(self):
     self.db = Database().connection()
-
+  
   def __del__(self):
     if self.db:
       self.db.close()
 
-  def get_all_user(self):
+  def get_all_book(self):
     cursor = self.db.cursor()
     try:
-      cursor.execute("SELECT * FROM user;")
+      cursor.execute("SELECT * FROM book;")
       response = cursor.fetchall()
       return response
     except:
-      return jsonify({ "error": "Error al consultar la tabla user"})
-    
-  def post_one_user(self, username, password, name):
+      return jsonify({"error": "Error al consultar la tabla book"})
+
+  def post_one_book(self, autor, desciption, url_img):
     cursor = self.db.cursor()
     try:
-      query = "INSERT INTO user (username, password, name) VALUE (%s,%s,%s);"
-      cursor.execute(query, (username, password, name))
-      print(username, password, name)
+      query = "INSERT INTO book (autor, description, url_img) VALUE (%s, %s, %s);"
+      cursor.execute(query, (autor, desciption, url_img))
       self.db.commit()
       return jsonify({ "last_row_id": cursor.lastrowid, "rowcount": cursor.rowcount }), 200
     except:
-      return jsonify({ "error": "Error al crear el usuario" }), 500
+      return jsonify({ "error": "Error al crear el libro" }), 500
+
