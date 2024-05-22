@@ -11,7 +11,7 @@ class Database:
     try:
       cursor = db.cursor()
       cursor.execute("""
-        create table if not exists author
+        create table if not exists autor
         (
           id_autor  int auto_increment
             primary key,
