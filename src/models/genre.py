@@ -16,7 +16,7 @@ class GenreModel:
       response = cursor.fetchall()
       return response
     except:
-      return jsonify({ "error": "Error al consultar la tabla genre" })
+      return { "error": "Error al consultar la tabla genre" }
     
   def post_one_genre(self, name):
     cursor = self.db.cursor()
@@ -24,6 +24,6 @@ class GenreModel:
       query = "INSERT INTO genre (genre_name) VALUE (%s);"
       cursor.execute(query, (name))
       self.db.commit()
-      return jsonify({ "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }), 200
+      return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
     except:
-      return jsonify({ "error": "Error al crear el libro" }), 500
+      return { "error": "Error al crear el libro" }, 500

@@ -142,7 +142,7 @@ class Database:
             foreign key (id_user) references user (id_user)
         );
       """)
-      print("Las tablas de crearon satisfactoriamente.")
+      print("Las tablas se crearon satisfactoriamente.")
     except Exception as e:
       print(f"Error durante la creación de las tablas: {e}")
     finally:
