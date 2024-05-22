@@ -14,7 +14,7 @@ class UserModel:
     try:
       cursor.execute("SELECT * FROM user;")
       response = cursor.fetchall()
-      return response
+      return jsonify({ 'data': response })
     except:
       return jsonify({ "error": "Error al consultar la tabla user"})
     
