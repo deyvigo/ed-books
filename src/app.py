@@ -11,6 +11,7 @@ app.register_blueprint(user_blueprint)
 app.register_blueprint(book_blueprint)
 app.register_blueprint(author_blueprint)
 app.register_blueprint(genre_blueprint)
+
 # @app.route("/", methods = ["GET"])
 # def hello ():
 #   cursor = db.cursor()
