@@ -5,7 +5,7 @@ class AuthorController:
   @staticmethod
   def get_all_author():
     response = AuthorModel().get_all_author()
-    return jsonify({ 'data': response })
+    return response
 
   @staticmethod
   def post_one_author():

@@ -14,7 +14,7 @@ class AuthorModel:
     try:
       cursor.execute("SELECT * FROM author;")
       response = cursor.fetchall()
-      return response
+      return jsonify({ "data": response })
     except:
       return jsonify({ "error": "Error al consultar la tabla author" })
     
