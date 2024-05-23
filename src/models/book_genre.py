@@ -14,7 +14,7 @@ class BookGenreModel:
     try:
       cursor.execute("SELECT * FROM book_genre;")
       response = cursor.fetchall()
-      return response
+      return { "data": response }
     except:
       return { "error": "Error al consultar la tabla book_genre" }
 

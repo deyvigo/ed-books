@@ -14,7 +14,7 @@ class BookModel:
     try:
       cursor.execute("SELECT * FROM book;")
       response = cursor.fetchall()
-      return { 'data': response }
+      return { "data": response }
     except:
       return { "error": "Error al consultar la tabla book" }
 

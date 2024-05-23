@@ -14,7 +14,7 @@ class UserModel:
     try:
       cursor.execute("SELECT * FROM user;")
       response = cursor.fetchall()
-      return jsonify({ 'data': response })
+      return { "data": response }
     except:
       return { "error": "Error al consultar la tabla user" } # <-- devolver objeto no json
     
@@ -25,6 +25,6 @@ class UserModel:
       cursor.execute(query, (username, password, name))
       print(username, password, name)
       self.db.commit()
-      return jsonify({ "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }), 200
+      return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
     except:
-      return jsonify({ "error": "Error al crear el usuario" }), 500
+      return { "error": "Error al crear el usuario" }, 500
