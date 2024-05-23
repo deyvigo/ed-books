@@ -1,5 +1,6 @@
 from flask import Flask
 from routes import user_blueprint
+from routes import friend_blueprint
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 
@@ -8,6 +9,7 @@ bcrypt = Bcrypt(app)
 CORS(app)
 
 app.register_blueprint(user_blueprint)
+app.register_blueprint(friend_blueprint)
 
 # @app.route("/", methods = ["GET"])
 # def hello ():

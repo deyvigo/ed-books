@@ -23,6 +23,21 @@ class FriendModel:
             cursor.close()
             self.db.close()
 
+    #Mostrar amigos
+    def get_all_friend(self):
+        cursor = self.db.cursor()
+        try:
+            cursor.execute("SELECT * FROM friend WHERE is_accept = 1;")
+            response = cursor.fetchall()
+            return response
+        except:
+            return jsonify({ "error": "Error al consultar la tabla friend"})
+        
+        finally:
+            cursor.close()
+            self.db.close()
+
+
     #Enviar solicitud de amistad 
     def post_one_friendRequest(self, id_friend, id_applicant, id_receiver, is_accept=0):
         cursor = self.db.cursor()
