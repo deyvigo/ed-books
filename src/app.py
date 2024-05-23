@@ -1,5 +1,5 @@
 from flask import Flask
-from routes import user_blueprint, book_blueprint, author_blueprint, genre_blueprint
+from routes import user_blueprint, book_blueprint, author_blueprint, genre_blueprint, book_genre_blueprint
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 
@@ -11,6 +11,7 @@ app.register_blueprint(user_blueprint)
 app.register_blueprint(book_blueprint)
 app.register_blueprint(author_blueprint)
 app.register_blueprint(genre_blueprint)
+app.register_blueprint(book_genre_blueprint)
 
 # @app.route("/", methods = ["GET"])
 # def hello ():

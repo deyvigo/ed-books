@@ -25,10 +25,10 @@ for book_data in books_data:
 # print(genres_set)
 
 # for genre in genres_set:
-#   GenreModel().post_one_genre(genre)
+#   GenreModel().post_one_genre(genre) # <-- insert genre
 
 # for author in author_set:
-#   AuthorModel().post_one_author(author)
+#   AuthorModel().post_one_author(author) # <-- insert author
 
 genres = GenreModel().get_all_genre()
 authors = AuthorModel().get_all_author()
@@ -52,7 +52,7 @@ for book_data in books_data:
   new_books_data.append(book)
 
 for book in new_books_data:
-  msg = BookModel().post_one_book(book["name"], book["id_author"], book["description"], book["url_img"])
+  msg = BookModel().post_one_book(book["name"], book["id_author"], book["description"], book["url_img"]) # <-- insert book
   print(msg)
 
 # print(author_set)
