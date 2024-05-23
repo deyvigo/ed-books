@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "The Hobbit",
+    "author": ["J.R.R. Tolkien"],
+    "genre": ["Fantasy", "Adventure"],
+    "description": "A hobbit named Bilbo Baggins goes on a quest to help dwarves reclaim their mountain home from a dragon."
+  },
+  {
+    "id": 2,
+    "title": "1984",
+    "author": ["George Orwell"],
+    "genre": ["Dystopian", "Science Fiction"],
+    "description": "A chilling vision of a totalitarian society under the ever-watchful eye of Big Brother."
+  },
+  {
+    "id": 3,
+    "title": "Pride and Prejudice",
+    "author": ["Jane Austen"],
+    "genre": ["Romance", "Classic"],
+    "description": "The romantic clash between the opinionated Elizabeth and her proud beau, Mr. Darcy."
+  },
+  {
+    "id": 4,
+    "title": "The Catcher in the Rye",
+    "author": ["J.D. Salinger"],
+    "genre": ["Classic", "Coming-of-Age"],
+    "description": "The story of Holden Caulfield, a teenager who leaves his prep school and goes underground in New York City for three days."
+  },
+  {
+    "id": 5,
+    "title": "To Kill a Mockingbird",
+    "author": ["Harper Lee"],
+    "genre": ["Classic", "Historical Fiction"],
+    "description": "A young girl named Scout Finch grows up in the racially charged Depression-era South where her father, a lawyer, defends a black man falsely accused of raping a white woman."
+  },
+  {
+    "id": 6,
+    "title": "The Great Gatsby",
+    "author": ["F. Scott Fitzgerald"],
+    "genre": ["Classic", "Tragedy"],
+    "description": "The story of the mysterious millionaire Jay Gatsby and his obsession with the beautiful Daisy Buchanan."
+  },
+  {
+    "id": 7,
+    "title": "Moby-Dick",
+    "author": ["Herman Melville"],
+    "genre": ["Adventure", "Classic"],
+    "description": "The voyage of the whaling ship Pequod, led by Captain Ahab who is obsessed with the giant white whale, Moby Dick."
+  },
+  {
+    "id": 8,
+    "title": "Brave New World",
+    "author": ["Aldous Huxley"],
+    "genre": ["Dystopian", "Science Fiction"],
+    "description": "A futuristic society where people are genetically engineered and controlled by a powerful state."
+  },
+  {
+    "id": 9,
+    "title": "Jane Eyre",
+    "author": ["Charlotte Brontë"],
+    "genre": ["Romance", "Classic"],
+    "description": "An orphaned young girl becomes a governess and falls in love with her mysterious employer, Mr. Rochester."
+  },
+  {
+    "id": 10,
+    "title": "Frankenstein",
+    "author": ["Mary Shelley"],
+    "genre": ["Gothic", "Science Fiction"],
+    "description": "A scientist named Victor Frankenstein creates a sapient creature in an unorthodox scientific experiment."
+  }
+]

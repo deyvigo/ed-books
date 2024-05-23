@@ -14,9 +14,9 @@ class AuthorModel:
     try:
       cursor.execute("SELECT * FROM author;")
       response = cursor.fetchall()
-      return jsonify({ "data": response })
+      return { "data": response }
     except:
-      return jsonify({ "error": "Error al consultar la tabla author" })
+      return { "error": "Error al consultar la tabla author" }
     
   def post_one_author(self, name):
     cursor = self.db.cursor()
@@ -24,6 +24,6 @@ class AuthorModel:
       query = "INSERT INTO author (name) VALUE (%s);"
       cursor.execute(query, (name))
       self.db.commit()
-      return jsonify({ "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }), 200
+      return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
     except:
-      return jsonify({ "error": "Error al crear el libro" }), 500
+      return { "error": "Error al crear el libro" }, 500

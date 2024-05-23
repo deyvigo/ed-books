@@ -14,17 +14,17 @@ class BookModel:
     try:
       cursor.execute("SELECT * FROM book;")
       response = cursor.fetchall()
-      return jsonify({ 'data': response })
+      return { 'data': response }
     except:
-      return jsonify({ "error": "Error al consultar la tabla book" })
+      return { "error": "Error al consultar la tabla book" }
 
-  def post_one_book(self, autor, desciption, url_img):
+  def post_one_book(self, name, id_author, description, url_img):
     cursor = self.db.cursor()
     try:
-      query = "INSERT INTO book (autor, description, url_img) VALUE (%s, %s, %s);"
-      cursor.execute(query, (autor, desciption, url_img))
+      query = "INSERT INTO book (name, id_author, description, url_img) VALUE (%s, %s, %s, %s);"
+      cursor.execute(query, (name, id_author, description, url_img))
       self.db.commit()
-      return jsonify({ "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }), 200
+      return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
     except:
-      return jsonify({ "error": "Error al crear el libro" }), 500
+      return { "error": "Error al crear el libro" }, 500
 
