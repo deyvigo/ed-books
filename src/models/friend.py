@@ -10,11 +10,11 @@ class FriendModel:
             self.db.close()
     
     #Mostrar solicitudes de amistad
-    def get_all_friendRequest(self,id_applicant):
+    def get_all_friendRequest(self,id_receiver):
         cursor = self.db.cursor()
         try:
-            query = "SELECT * FROM friend WHERE is_accept = 0 AND id_applicant = %s;"
-            cursor.execute(query, (id_applicant,))
+            query = "SELECT * FROM friend WHERE is_accept = 0 AND id_receiver = %s;"
+            cursor.execute(query, (id_receiver,))
             response = cursor.fetchall()
             return { 'data': response }
         except:

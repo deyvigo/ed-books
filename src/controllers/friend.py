@@ -1,5 +1,5 @@
 from models.friend import FriendModel
-from flask import jsonify, request
+from flask import request
 
 class FriendController:
   @staticmethod
