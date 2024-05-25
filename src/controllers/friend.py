@@ -3,13 +3,13 @@ from flask import jsonify, request
 
 class FriendController:
   @staticmethod
-  def get_all_friend():
-    response = FriendModel().get_all_friend()
+  def get_all_friend(id_applicant):
+    response = FriendModel().get_all_friend(id_applicant)
     return response
 
   @staticmethod
-  def get_all_friendRequest():
-    response = FriendModel().get_all_friendRequest()
+  def get_all_friendRequest(id_applicant):
+    response = FriendModel().get_all_friendRequest(id_applicant)
     return response
   
   @staticmethod
