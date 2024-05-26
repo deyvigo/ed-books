@@ -8,7 +8,7 @@ sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
 from models import GenreModel, AuthorModel, BookModel, BookGenreModel
 
-with open("src/mocks/books.json", "r") as file:
+with open("src/mocks/books.json", "r", encoding="ISO-8859-1") as file:
   books_data = json.load(file)
 # Falta Cumbres Borrascosas
 
@@ -41,7 +41,7 @@ new_books_data = []
 for book_data in books_data:
   book = {
     "name": book_data["title"],
-    "url_img": "https://localhost:1234",
+    "url_img": book_data["url_img"],
     "description": book_data["description"]
   }
 
