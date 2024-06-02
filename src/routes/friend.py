@@ -5,31 +5,41 @@ friend_blueprint = Blueprint('friend', __name__)
 
 @friend_blueprint.route('/friends', methods=['GET'])
 def get_all_friends():
-  id_applicant = request.args.get('id_applicant')
-  if not id_applicant:
-      return {"error": "id_applicant es requerido"}, 400
+  id = request.args.get('id')
+  if not id:
+      return {"error": "id es requerido"}, 400
   try:
-      id_applicant = int(id_applicant)
+      id = int(id)
   except ValueError:
-      return {"error": "id_applicant debe ser un entero"}, 400
-  return FriendController.get_all_friends(id_applicant)
+      return {"error": "id debe ser un entero"}, 400
+  return FriendController.get_all_friends(id)
 
-@friend_blueprint.route('/friends/Requests', methods=['GET'])
+@friend_blueprint.route('/friends/requests', methods=['GET'])
 def get_all_friends_requests():
-  id_receiver = request.args.get('id_receiver')
-  if not id_receiver:
-      return {"error": "id_receiver es requerido"}, 400
+  id = request.args.get('id')
+  if not id:
+      return {"error": "id es requerido"}, 400
   try:
-      id_receiver = int(id_receiver)
+      id = int(id)
   except ValueError:
-      return {"error": "id_receiver debe ser un entero"}, 400
-  return FriendController.get_all_friends_requests(id_receiver)
+      return {"error": "id debe ser un entero"}, 400
+  return FriendController.get_all_friends_requests(id)
 
-@friend_blueprint.route('/friends/Requests', methods=['POST'])
+@friend_blueprint.route('/friends/requests', methods=['POST'])
 def regist_friend_request():
-  return FriendController.regist_one_friends_requests()
+  return FriendController.post_one_friends_requests()
 
-@friend_blueprint.route('/friends/Requests', methods=['POST'])
+@friend_blueprint.route('/friends/update', methods=['POST'])
 @friend_blueprint.route('/friends', methods=['POST'])
 def update_friend_status():
   return FriendController.update_friend_status()
+
+@friend_blueprint.route('/list', methods=['GET'])
+def get_list_friends():
+   id = request.args.get('id')
+   return FriendController.get_list_friends(id)
+
+@friend_blueprint.route('/list/request', methods=['GET'])
+def get_list_friends_requests():
+   id = request.args.get('id')
+   return FriendController.get_list_friends_requests(id)
