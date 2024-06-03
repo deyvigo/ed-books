@@ -1,4 +1,4 @@
-from flask import Blueprint,request
+from flask import Blueprint, request
 from controllers.friend import FriendController
 
 friend_blueprint = Blueprint('friend', __name__)
@@ -43,3 +43,7 @@ def get_list_friends():
 def get_list_friends_requests():
    id = request.args.get('id')
    return FriendController.get_list_friends_requests(id)
+
+@friend_blueprint.route('/friends/recommended/<username>', methods=['GET'])
+def get_recommended_friends(username):
+  return FriendController.get_recomended_friends(username.lower())

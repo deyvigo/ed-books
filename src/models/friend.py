@@ -11,7 +11,7 @@ class FriendModel:
       if self.db:
         self.db.close()
 
-    def get_all_friends (self):
+    def get_all_friends_table(self):
       cursor = self.db.cursor()
       try:
         query = "SELECT * FROM friend;"
