@@ -1,6 +1,5 @@
 from entity.Genre import Genre
 from entity.Book import Book
-import json
 
 class Node:
   def __init__(self, data: Genre | Book) -> None:
@@ -34,8 +33,8 @@ class GraphGenre:
         break
     
     if genre_node:
-      print(f"El genero {genre_node.genre_name} está en el grafo.")
-      print(f"Libros conectados")
+      # print(f"El genero {genre_node.genre_name} está en el grafo.")
+      # print(f"Libros conectados")
       return self.adjacency_list[genre_node]
       # for book in self.adjacency_list[genre_node]:
       #   print(f"{book.to_json()}")
