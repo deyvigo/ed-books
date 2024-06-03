@@ -25,7 +25,6 @@ class GraphGenre:
 
   def search_genre (self, genre_name):
     genre_node = None # <-- to Genre
-    response = []
 
     for node in self.adjacency_list:
       if isinstance(node, Genre) and node.genre_name.lower() == genre_name:
