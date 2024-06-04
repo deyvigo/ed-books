@@ -104,9 +104,9 @@ class FriendModel:
             return { "error": "Error al enviar solicitud de amistad" }, 500
         except:
             return { "error": "Error al enviar solicitud de amistad" }, 500
-        finally:
-            cursor.close()
-            self.db.close()
+        # finally:
+        #     cursor.close()
+        #     self.db.close()
 
     
 
