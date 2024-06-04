@@ -1,0 +1,162 @@
+[
+  {
+    "id_applicant": 1,
+    "id_receiver": 2,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 1,
+    "id_receiver": 3,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 1,
+    "id_receiver": 6,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 1,
+    "id_receiver": 4,
+    "is_accept": -1
+  },
+  {
+    "id_applicant": 2,
+    "id_receiver": 19,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 2,
+    "id_receiver": 14,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 3,
+    "id_receiver": 6,
+    "is_accept": 0
+  },
+  {
+    "id_applicant": 3,
+    "id_receiver": 5,
+    "is_accept": 0
+  },
+  {
+    "id_applicant": 4,
+    "id_receiver": 5,
+    "is_accept": 0
+  },
+  {
+    "id_applicant": 4,
+    "id_receiver": 7,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 5,
+    "id_receiver": 7,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 5,
+    "id_receiver": 8,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 5,
+    "id_receiver": 9,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 6,
+    "id_receiver": 10,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 6,
+    "id_receiver": 19,
+    "is_accept": -1
+  },
+  {
+    "id_applicant": 7,
+    "id_receiver": 8,
+    "is_accept": -1
+  },
+  {
+    "id_applicant": 8,
+    "id_receiver": 9,
+    "is_accept": -1
+  },
+  {
+    "id_applicant": 10,
+    "id_receiver": 11,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 10,
+    "id_receiver": 12,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 11,
+    "id_receiver": 14,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 11,
+    "id_receiver": 13,
+    "is_accept": -1
+  },
+  {
+    "id_applicant": 11,
+    "id_receiver": 12,
+    "is_accept": -1
+  },
+  {
+    "id_applicant": 11,
+    "id_receiver": 14,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 12,
+    "id_receiver": 13,
+    "is_accept": 0
+  },
+  {
+    "id_applicant": 13,
+    "id_receiver": 15,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 13,
+    "id_receiver": 16,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 14,
+    "id_receiver": 20,
+    "is_accept": 0
+  },
+  {
+    "id_applicant": 14,
+    "id_receiver": 18,
+    "is_accept": 0
+  },
+  {
+    "id_applicant": 16,
+    "id_receiver": 17,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 17,
+    "id_receiver": 20,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 18,
+    "id_receiver": 20,
+    "is_accept": 1
+  },
+  {
+    "id_applicant": 18,
+    "id_receiver": 19,
+    "is_accept": -1
+  }
+]
