@@ -1,5 +1,4 @@
 from utils.connection import Database
-from flask import json
 from structures.listaEnlazadaDoble import ListaDoble
 from structures.ListaEnlazada import ListaEnlazada
 
@@ -12,10 +11,38 @@ class FriendModel:
             self.db.close()
     
     #Mostrar solicitudes de amistad
-    def get_all_friends_requests(self,id):
+    def get_all_friend(self):
+        cursor = self.db.cursor()
+        try:
+            query = "SELECT * FROM friend;"
+            cursor.execute(query)
+            response = cursor.fetchall()
+            return { 'data': response }
+        except:
+            return { "error": "Error al consultar la tabla friend"} 
+        finally:
+            cursor.close()
+            self.db.close()
+
+
+    def get_received_friends_requests(self,id):
         cursor = self.db.cursor()
         try:
             query = "SELECT * FROM friend WHERE is_accept = 0 AND id_receiver = %s;"
+            cursor.execute(query, (id))
+            response = cursor.fetchall()
+            return { 'data': response }
+        except:
+            return { "error": "Error al consultar la tabla friend"} 
+        finally:
+            cursor.close()
+            self.db.close()
+
+    #Mostrar solicitudes de amistad
+    def get_sent_friends_requests(self,id):
+        cursor = self.db.cursor()
+        try:
+            query = "SELECT * FROM friend WHERE is_accept = 0 AND id_applicant = %s;"
             cursor.execute(query, (id))
             response = cursor.fetchall()
             return { 'data': response }
@@ -38,38 +65,6 @@ class FriendModel:
         finally:
             cursor.close()
             self.db.close()
-    
-    #Lista de amigos
-    def get_list_friends(self, id):
-        data = self.get_all_friends(id)
-        friends = data['data']
-        list_friends = ListaDoble()
-
-        for friend in friends:
-            if str(friend.get("id_applicant")) == str(id):
-                friend_id = friend.get("id_receiver")
-            else:
-                friend_id = friend.get("id_applicant")
-            list_friends.agregar_al_inicio({"id_friend":friend_id})
-        data=list_friends.viewData()
-        return data
-
-    
-    #Lista de solicitudes pendientes
-    def get_list_friends_requests(self,id):
-        data= self.get_all_friends_requests(id)
-        requests=data['data'] 
-        list_requests= ListaEnlazada()
-
-        for request in requests:
-            if str(request.get("id_applicant")) == str(id):
-                request_id = request.get("id_receiver")
-            else:
-                request_id = request.get("id_applicant")
-            list_requests.append({"request_id":request_id})
-        data=list_requests.viewData()
-        return data
-
 
     #Enviar solicitud de amistad // is_accept =0 pendiente
     def post_one_friend_request(self, id_applicant, id_receiver, is_accept=0):
