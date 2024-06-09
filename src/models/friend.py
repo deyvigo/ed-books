@@ -20,9 +20,6 @@ class FriendModel:
             return { 'data': response }
         except:
             return { "error": "Error al consultar la tabla friend"} 
-        finally:
-            cursor.close()
-            self.db.close()
 
     #Enviar solicitud de amistad // is_accept =0 pendiente
     def post_one_friend_request(self, id_applicant, id_receiver, is_accept=0):
@@ -34,9 +31,6 @@ class FriendModel:
             return { "message": "Solicitud de amistad enviada exitosamente" }, 200
         except:
             return { "error": "Error al enviar solicitud de amistad" }, 500
-        finally:
-            cursor.close()
-            self.db.close()
 
     def update_friend_status(self, id_applicant, id_receiver, is_accept):
         cursor = self.db.cursor()
@@ -50,9 +44,6 @@ class FriendModel:
             return {"message": f"Peticion de amistad {action} con éxito"}, 200
         except Exception as e:
             return {"error": f"Error al {action} la peticion de amistad", "details": str(e)}, 500
-        finally:
-            cursor.close()
-            self.db.close()
     
     def delete_friend(self, id_applicant, id_receiver):
         cursor = self.db.cursor()
@@ -68,7 +59,3 @@ class FriendModel:
 
         except Exception as e:
             return {"error": "Error al eliminar la petición de amistad", "details": str(e)}, 500
-
-        finally:
-            cursor.close()
-            self.db.close()
