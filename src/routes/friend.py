@@ -4,26 +4,16 @@ from controllers.friend import FriendController
 friend_blueprint = Blueprint('friend', __name__)
 
 @friend_blueprint.route('/friends', methods=['GET'])
-def get_all_friends():
-  id = request.args.get('id')
-  if not id:
-      return {"error": "id es requerido"}, 400
-  try:
-      id = int(id)
-  except ValueError:
-      return {"error": "id debe ser un entero"}, 400
-  return FriendController.get_all_friends(id)
+def get_friends():
+   return FriendController.get_friends()
 
-@friend_blueprint.route('/friends/requests', methods=['GET'])
-def get_all_friends_requests():
-  id = request.args.get('id')
-  if not id:
-      return {"error": "id es requerido"}, 400
-  try:
-      id = int(id)
-  except ValueError:
-      return {"error": "id debe ser un entero"}, 400
-  return FriendController.get_all_friends_requests(id)
+@friend_blueprint.route('/requests/received', methods=['GET'])
+def get_received_friends_requests():
+   return FriendController.get_received_friends_requests()
+
+@friend_blueprint.route('/requests/sent', methods=['GET'])
+def get_sent_friends_requests():
+   return FriendController.get_sent_friends_requests()
 
 @friend_blueprint.route('/friends/requests', methods=['POST'])
 def regist_friend_request():
@@ -33,13 +23,3 @@ def regist_friend_request():
 @friend_blueprint.route('/friends', methods=['POST'])
 def update_friend_status():
   return FriendController.update_friend_status()
-
-@friend_blueprint.route('/list', methods=['GET'])
-def get_list_friends():
-   id = request.args.get('id')
-   return FriendController.get_list_friends(id)
-
-@friend_blueprint.route('/list/request', methods=['GET'])
-def get_list_friends_requests():
-   id = request.args.get('id')
-   return FriendController.get_list_friends_requests(id)
