@@ -1,7 +1,11 @@
-from models.friend import FriendModel
+from typing import Dict
 from flask import request
 from structures.listaEnlazadaDoble import ListaDoble
 from structures.ListaEnlazada import ListaEnlazada
+
+from models import UserModel, FriendModel
+from entity import Friend
+from structures.GraphFriends import GraphFriends, ListaEnlazada, Nodo
 
 class FriendController:
   @staticmethod
@@ -97,3 +101,41 @@ class FriendController:
             list_requests.append({"request_id":request_id})
     data=list_requests.viewData()
     return data
+  def get_list_friends_requests(id):
+    response = FriendModel().get_list_friends_requests(id)
+    return response
+  
+  @staticmethod
+  def get_recomended_friends(id_user):
+    users = UserModel().get_all_user().get("data")
+    friends = FriendModel().get_all_friends_table()["data"]
+
+    lista = ListaEnlazada()
+    for friend_pair in friends:
+      fpc = Friend(friend_pair["id_friend"], friend_pair["id_applicant"], friend_pair["id_receiver"], friend_pair["is_accept"])
+      lista.add_nodo(Nodo(fpc))
+
+    # only is_accept = 1 is for friends -1 and 0 is for states of request
+    # lista.show_list()
+
+    lista.delete_by_status([-1, 0])
+
+    # print("Eliminados los -1 y 0")
+    # lista.show_list()
+
+    G = GraphFriends()
+
+    for user in users:
+      print(user["id_user"])
+      G.add_node(user["id_user"])
+
+    init = lista.init
+    while (init != None):
+      G.add_edge(init.data.id_applicant, init.data.id_receiver)
+      init = init.next
+
+    recommended_friends = G.recomended_friends(id_user)
+    if not recommended_friends:
+      return { "data": [] }, 200
+    response = [user for user in users if user["id_user"] in recommended_friends]
+    return { "data": response }, 200

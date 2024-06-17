@@ -1,0 +1,122 @@
+[
+  {
+    "id_user": 1,
+    "username": "jdoe",
+    "name": "John Doe",
+    "password": "password123"
+  },
+  {
+    "id_user": 2,
+    "username": "asmith",
+    "name": "Alice Smith",
+    "password": "password123"
+  },
+  {
+    "id_user": 3,
+    "username": "mjohnson",
+    "name": "Michael Johnson",
+    "password": "password123"
+  },
+  {
+    "id_user": 4,
+    "username": "bwilson",
+    "name": "Barbara Wilson",
+    "password": "password123"
+  },
+  {
+    "id_user": 5,
+    "username": "dlee",
+    "name": "David Lee",
+    "password": "password123"
+  },
+  {
+    "id_user": 6,
+    "username": "kwhite",
+    "name": "Karen White",
+    "password": "password123"
+  },
+  {
+    "id_user": 7,
+    "username": "wthomas",
+    "name": "William Thomas",
+    "password": "password123"
+  },
+  {
+    "id_user": 8,
+    "username": "rmoore",
+    "name": "Richard Moore",
+    "password": "password123"
+  },
+  {
+    "id_user": 9,
+    "username": "cgonzalez",
+    "name": "Carlos Gonzalez",
+    "password": "password123"
+  },
+  {
+    "id_user": 10,
+    "username": "mjackson",
+    "name": "Mary Jackson",
+    "password": "password123"
+  },
+  {
+    "id_user": 11,
+    "username": "sflores",
+    "name": "Sandra Flores",
+    "password": "password123"
+  },
+  {
+    "id_user": 12,
+    "username": "jmartinez",
+    "name": "Jose Martinez",
+    "password": "password123"
+  },
+  {
+    "id_user": 13,
+    "username": "mmurphy",
+    "name": "Michelle Murphy",
+    "password": "password123"
+  },
+  {
+    "id_user": 14,
+    "username": "ccruz",
+    "name": "Christopher Cruz",
+    "password": "password123"
+  },
+  {
+    "id_user": 15,
+    "username": "mhughes",
+    "name": "Matthew Hughes",
+    "password": "password123"
+  },
+  {
+    "id_user": 16,
+    "username": "twood",
+    "name": "Theresa Wood",
+    "password": "password123"
+  },
+  {
+    "id_user": 17,
+    "username": "jlopez",
+    "name": "Jennifer Lopez",
+    "password": "password123"
+  },
+  {
+    "id_user": 18,
+    "username": "gmartin",
+    "name": "George Martin",
+    "password": "password123"
+  },
+  {
+    "id_user": 19,
+    "username": "rhill",
+    "name": "Rebecca Hill",
+    "password": "password123"
+  },
+  {
+    "id_user": 20,
+    "username": "jyoung",
+    "name": "James Young",
+    "password": "password123"
+  }
+]

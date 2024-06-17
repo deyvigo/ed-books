@@ -1,14 +1,22 @@
 from utils.connection import Database
-from structures.listaEnlazadaDoble import ListaDoble
-from structures.ListaEnlazada import ListaEnlazada
 
 class FriendModel:
     def __init__(self):
-        self.db= Database().connection()
+      self.db= Database().connection()
     
     def __del__(self):
-        if self.db:
-            self.db.close()
+      if self.db:
+        self.db.close()
+
+    def get_all_friends_table(self):
+      cursor = self.db.cursor()
+      try:
+        query = "SELECT * FROM friend;"
+        cursor.execute(query)
+        response = cursor.fetchall()
+        return { "data": response }
+      except:
+        return { "error": "Error al consultar la tabla friend" }
     
     #Mostrar solicitudes de amistad
     def get_all_friend(self):

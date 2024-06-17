@@ -13,3 +13,8 @@ class User:
       "name" : self.name
     }
 
+  def __repr__(self) -> str:
+    return f"{self.username}"
+
+  def to_json_ommit_password(self):
+    return { "id_user": self.id_user, "name": self.name, "username": self.username } 

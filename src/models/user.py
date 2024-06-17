@@ -34,7 +34,6 @@ class UserModel:
     try:
       query = "INSERT INTO user (username, password, name) VALUE (%s,%s,%s);"
       cursor.execute(query, (username, password, name))
-      print(username, password, name)
       self.db.commit()
       return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
     except:
