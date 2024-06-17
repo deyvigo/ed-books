@@ -2,8 +2,8 @@ from typing import Dict
 from flask import request
 
 from models import UserModel, FriendModel
-from entity import User
-from structures.GraphFriends.Graph_Friends import GraphFriends
+from entity import Friend
+from structures.GraphFriends import GraphFriends, ListaEnlazada, Nodo
 
 class FriendController:
   @staticmethod
@@ -39,28 +39,36 @@ class FriendController:
     return response
   
   @staticmethod
-  def get_recomended_friends(username):
+  def get_recomended_friends(id_user):
     users = UserModel().get_all_user().get("data")
+    friends = FriendModel().get_all_friends_table()["data"]
 
-    users_dict: Dict[str, User] = {}
+    lista = ListaEnlazada()
+    for friend_pair in friends:
+      fpc = Friend(friend_pair["id_friend"], friend_pair["id_applicant"], friend_pair["id_receiver"], friend_pair["is_accept"])
+      lista.add_nodo(Nodo(fpc))
+
+    # only is_accept = 1 is for friends -1 and 0 is for states of request
+    # lista.show_list()
+
+    lista.delete_by_status([-1, 0])
+
+    # print("Eliminados los -1 y 0")
+    # lista.show_list()
+
     G = GraphFriends()
 
     for user in users:
-      key = user.get("id_username") # <- id_username es unico
-      uc = User(user.get("id_user"), user.get("name"), user.get("username"), user.get("password"))
+      print(user["id_user"])
+      G.add_node(user["id_user"])
 
-      if key not in users_dict:
-        users_dict[username] = uc
+    init = lista.init
+    while (init != None):
+      G.add_edge(init.data.id_applicant, init.data.id_receiver)
+      init = init.next
 
-      G.add_node(uc)
-
-    friends = FriendModel().get_all_friends_table().get("data")
-
-    # TODO: delete all friends by state not friends (-1 or 0)
-
-    for pair in friends:
-      user_one = users_dict[pair.get("id_applicant")]
-      user_two = users_dict[pair.get("id_receiver")]
-      G.add_edge(user_one, user_two)
-    
-    return { "data": friends }
+    recommended_friends = G.recomended_friends(id_user)
+    if not recommended_friends:
+      return { "data": [] }, 200
+    response = [user for user in users if user["id_user"] in recommended_friends]
+    return { "data": response }, 200

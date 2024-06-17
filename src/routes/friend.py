@@ -44,6 +44,6 @@ def get_list_friends_requests():
    id = request.args.get('id')
    return FriendController.get_list_friends_requests(id)
 
-@friend_blueprint.route('/friends/recommended/<username>', methods=['GET'])
-def get_recommended_friends(username):
-  return FriendController.get_recomended_friends(username.lower())
+@friend_blueprint.route('/friends/recommended/<id_user>', methods=['GET'])
+def get_recommended_friends(id_user):
+  return FriendController.get_recomended_friends(id_user)
