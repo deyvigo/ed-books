@@ -126,7 +126,6 @@ class FriendController:
     G = GraphFriends()
 
     for user in users:
-      print(user["id_user"])
       G.add_node(user["id_user"])
 
     init = lista.init
