@@ -23,7 +23,7 @@ class UserModel:
     cursor = self.db.cursor()
     try:
       query = "SELECT * FROM user WHERE username = %s;"
-      cursor.execute(query, (username))
+      cursor.execute(query, (username,))
       response = cursor.fetchone()
       return { "data": response}
     except:
@@ -43,7 +43,7 @@ class UserModel:
     cursor = self.db.cursor()
     try:
       query = "DELETE FROM user WHERE id_user = %s;"
-      cursor.execute(query, (id))
+      cursor.execute(query, (id,))
       self.db.commit()
       return { "row_count": cursor.rowcount }, 200
     except:

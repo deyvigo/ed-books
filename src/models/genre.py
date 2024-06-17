@@ -22,7 +22,7 @@ class GenreModel:
     cursor = self.db.cursor()
     try:
       query = "INSERT INTO genre (genre_name) VALUE (%s);"
-      cursor.execute(query, (name))
+      cursor.execute(query, (name,))
       self.db.commit()
       return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
     except:
