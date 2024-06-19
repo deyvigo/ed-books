@@ -13,7 +13,7 @@ class UserModel:
   def get_all_user(self):
     cursor = self.db.cursor()
     try:
-      cursor.execute("SELECT * FROM user;")
+      cursor.execute("SELECT id_user, name, username FROM user;")
       response = cursor.fetchall()
       return { "data": response }
     except:
