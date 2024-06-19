@@ -7,6 +7,7 @@ friend_blueprint = Blueprint('friend', __name__)
 def get_friends():
    return FriendController.get_friends()
 
+# TODO
 @friend_blueprint.route('/requests/received', methods=['GET'])
 def get_received_friends_requests():
    return FriendController.get_received_friends_requests()

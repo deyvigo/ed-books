@@ -82,7 +82,7 @@ class FriendController:
         if str(req.get("id_receiver")) == str(id) and str(req.get("is_accept")) == str(0):
             request_id = req.get("id_applicant")
             list_requests.append({"request_id":request_id})
-    data=list_requests.viewData()
+    data=list_requests.viewData() #TODO
     return data
   
   @staticmethod
