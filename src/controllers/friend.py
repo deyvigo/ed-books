@@ -99,7 +99,7 @@ class FriendController:
         if str(req.get("id_applicant")) == str(id) and str(req.get("is_accept")) == str(0):
             request_id = req.get("id_receiver")
             list_requests.append({"request_id":request_id})
-    data=list_requests.viewData()
+    data=list_requests.viewData() #TODO
     return data
   def get_list_friends_requests(id):
     response = FriendModel().get_list_friends_requests(id)
@@ -134,7 +134,19 @@ class FriendController:
       init = init.next
 
     recommended_friends = G.recomended_friends(id_user)
+    id_friend_rec = []
     if not recommended_friends:
       return { "data": [] }, 200
-    response = [user for user in users if user["id_user"] in recommended_friends]
+    print(recommended_friends)
+    for key, number in recommended_friends.items():
+      id_friend_rec.append(key)
+
+    response = [user for user in users if user["id_user"] in id_friend_rec]
+
+    for fr in response:
+      fr["message"] = str(recommended_friends[fr["id_user"]]) + " amigo(s) en común"
+
+    print(response)
+      
+    # response = [user for user in users if user["id_user"] in recommended_friends]
     return { "data": response }, 200

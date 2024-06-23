@@ -22,12 +22,13 @@ class GraphFriends:
     if not friends:
       return None
 
-    recommended_friends = set()
+    recommended_friends = {}
 
     for friend in friends:
       friends_of_friend = self.adjacency_list[friend]
       for fr in friends_of_friend:
-        if fr not in recommended_friends and fr != int(id_user):
-          recommended_friends.add(fr)
+        if fr != int(id_user) and fr not in friends:
+          if fr not in recommended_friends:
+            recommended_friends[fr] = len(set(self.adjacency_list[int(fr)]) & set(self.adjacency_list[int(id_user)]))
 
     return recommended_friends
