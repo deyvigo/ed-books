@@ -1,0 +1,19 @@
+meta {
+  name: update a friend request status
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{BACKEND_URL}}/friends
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id_applicant": 2,
+    "id_receiver": 10,
+    "is_accept": 1
+  }
+}

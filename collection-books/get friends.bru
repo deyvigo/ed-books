@@ -1,0 +1,15 @@
+meta {
+  name: get friends
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{BACKEND_URL}}/friends?id=2
+  body: none
+  auth: none
+}
+
+params:query {
+  id: 2
+}

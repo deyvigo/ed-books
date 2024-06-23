@@ -1,0 +1,19 @@
+meta {
+  name: register one user
+  type: http
+  seq: 16
+}
+
+post {
+  url: {{BACKEND_URL}}/user
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "deyvigo",
+    "password": "123456",
+    "name": "Deyvi Gomez"
+  }
+}

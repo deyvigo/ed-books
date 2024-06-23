@@ -1,0 +1,18 @@
+meta {
+  name: send a friend request
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{BACKEND_URL}}/friends/requests
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id_applicant": 2,
+    "id_receiver": 10
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: list request
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{BACKEND_URL}}/list/request?id=1
+  body: none
+  auth: none
+}
+
+params:query {
+  id: 1
+}
