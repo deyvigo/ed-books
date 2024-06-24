@@ -40,11 +40,11 @@ class FriendModel:
         except:
             return { "error": "Error al enviar solicitud de amistad" }, 500
 
-    def update_friend_status(self, id_applicant, id_receiver, is_accept):
+    def update_friend_status(self, id_friend):
         cursor = self.db.cursor()
         try:
-            query = "UPDATE friend SET is_accept = %s WHERE id_applicant = %s AND id_receiver = %s"
-            cursor.execute(query, (is_accept, id_applicant, id_receiver))
+            query = "UPDATE friend SET is_accept = 1 WHERE id_friend = %s;"
+            cursor.execute(query, (id_friend,))
             action = "actualizar"
             self.db.commit()
             if cursor.rowcount == 0:
@@ -53,17 +53,17 @@ class FriendModel:
         except Exception as e:
             return {"error": f"Error al {action} la peticion de amistad", "details": str(e)}, 500
     
-    def delete_friend(self, id_applicant, id_receiver):
+    def delete_friend(self, id_friend):
         cursor = self.db.cursor()
         try:
-            query = "DELETE FROM friend WHERE id_applicant = %s AND id_receiver = %s"
-            cursor.execute(query, (id_applicant, id_receiver))
+            query = "DELETE FROM friend WHERE id_friend = %s;"
+            cursor.execute(query, (id_friend,))
             self.db.commit()
 
             if cursor.rowcount == 0:
-                return {"error": "No se encontró la petición de amistad para eliminar"}, 404
+                return { "error": "No se encontró la petición de amistad para eliminar" }, 404
             
-            return {"message": "Petición de amistad eliminada con éxito"}, 200
+            return { "message": "Petición de amistad eliminada con éxito" }, 200
 
         except Exception as e:
-            return {"error": "Error al eliminar la petición de amistad", "details": str(e)}, 500
+            return { "error": "Error al eliminar la petición de amistad", "details": str(e) }, 500

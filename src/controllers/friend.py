@@ -1,6 +1,6 @@
 from flask import request
 from structures.listaEnlazadaDoble import ListaDoble
-from structures.ListaEnlazada import ListaEnlazada
+from structures.ListaEnlazada import ListaEnlazada as LE
 
 from models import UserModel, FriendModel
 from entity import Friend
@@ -17,7 +17,7 @@ class FriendController:
     cont=0
 
     if id_applicant is None or id_receiver is None :
-            return {"error": "id_applicant y id_receiver son requeridos"}, 400
+      return {"error": "id_applicant y id_receiver son requeridos"}, 400
 
     for friend in friends:
       if (friend.get("id_applicant") == id_applicant and friend.get("id_receiver") == id_receiver) or (friend.get("id_applicant") == id_receiver and friend.get("id_receiver") == id_applicant):
@@ -32,74 +32,119 @@ class FriendController:
   @staticmethod
   def update_friend_status():
     data = request.json
-    id_applicant=data.get("id_applicant")
-    id_receiver=data.get("id_receiver")
-    is_accept=data.get("is_accept")
+    id_friend = data.get("id_friend") # id of friend request
 
-    if id_applicant is None or id_receiver is None or is_accept is None:
-            return {"error": "id_applicant, id_receiver y is_accept son requeridos"}, 400
+    if id_friend is None:
+      return { "error": "id_friend son requeridos" }, 400
 
-    if is_accept==-1:
-        response=FriendModel().delete_friend(id_applicant,id_receiver)
-    elif is_accept==0 or is_accept==1:
-        response=FriendModel().update_friend_status(id_applicant,id_receiver,is_accept)
+    if request.method == "DELETE":
+      response = FriendModel().delete_friend(id_friend)
+    elif request.method == "PUT":
+      response = FriendModel().update_friend_status(id_friend)
     else:
-       {"error": f"Error al actualizar la peticion de amistad"}, 500
+      { "error": f"Error al actualizar la peticion de amistad" }, 500
     return response 
   
   @staticmethod
   def get_friends():
     id = request.args.get('id')
+
+    if id is None:
+      return {"error": "id es requerido"}, 400
+    
     data = FriendModel().get_all_friend()
+    users = UserModel().get_all_user()["data"]
+    map_users = {}
     friends = data['data']
     list_friends = ListaDoble()
 
-    if id is None:
-            return {"error": "id es requerido"}, 400
+    for user in users:
+      map_users[user["id_user"]] = user
 
     for friend in friends:
       if (str(friend.get("id_applicant")) == str(id) or str(friend.get("id_receiver")) == str(id)) and str(friend.get("is_accept")) == str(1):
         if str(friend.get("id_applicant")) == str(id):
           friend_id = friend.get("id_receiver")
         else:
-            friend_id = friend.get("id_applicant")
-        list_friends.agregar_al_inicio({"id_friend":friend_id})
-    response=list_friends.viewData()
+          friend_id = friend.get("id_applicant")
+        list_friends.agregar_al_inicio(friend_id)
+    response = []
+
+    init = list_friends.cabeza
+
+    while (init != None):
+      response.append(map_users[init.data])
+      init = init.sgte
     return response 
-  
+
   @staticmethod
   def get_received_friends_requests():
     id = request.args.get('id')
-    data= FriendModel().get_all_friend()
-    requests=data['data'] 
-    list_requests= ListaEnlazada()
 
     if id is None:
-            return {"error": "id es requerido"}, 400
-      
+      return { "error": "id es requerido" }, 400
+    
+    requests = FriendModel().get_all_friend()["data"]
+    list_requests= LE()
+    users = UserModel().get_all_user()["data"]
+
+    map_users = {}
+
+    for user in users:
+      map_users[user["id_user"]] = user
+
     for req in requests:
-        if str(req.get("id_receiver")) == str(id) and str(req.get("is_accept")) == str(0):
-            request_id = req.get("id_applicant")
-            list_requests.append({"request_id":request_id})
-    data=list_requests.viewData() #TODO
-    return data
+      print(req)
+      if str(req.get("id_receiver")) == str(id) and str(req.get("is_accept")) == str(0):
+        request_id = req.get("id_applicant")
+        list_requests.append(req)
+    
+    track = list_requests.head
+    response = []
+
+    while(track != None):
+      response.append(track.data)
+      track = track.next
+    # data = list_requests.viewData() #TODO
+
+    for fr in response:
+      fr["user"] = map_users[fr["id_applicant"]]
+
+    return { "data": response }
   
   @staticmethod
   def get_sent_friends_requests():
     id = request.args.get('id')
-    data= FriendModel().get_all_friend()
-    requests=data['data'] 
-    list_requests= ListaEnlazada()
 
     if id is None:
-            return {"error": "id es requerido"}, 400
+      return {"error": "id es requerido"}, 400
+    
+    requests = FriendModel().get_all_friend()["data"]
+    list_requests= LE()
+    users = UserModel().get_all_user()["data"]
+
+    map_users = {}
+
+    for user in users:
+      map_users[user["id_user"]] = user
 
     for req in requests:
-        if str(req.get("id_applicant")) == str(id) and str(req.get("is_accept")) == str(0):
-            request_id = req.get("id_receiver")
-            list_requests.append({"request_id":request_id})
-    data=list_requests.viewData() #TODO
-    return data
+      if str(req.get("id_applicant")) == str(id) and str(req.get("is_accept")) == str(0):
+        request_id = req.get("id_receiver")
+        list_requests.append(req)
+
+    track = list_requests.head
+    response = []
+
+    while(track != None):
+      response.append(track.data)
+      track = track.next
+
+    for fr in response:
+      fr["user"] = map_users[fr["id_receiver"]]
+
+    return { "data": response }
+  
   def get_list_friends_requests(id):
     response = FriendModel().get_list_friends_requests(id)
     return response
@@ -136,7 +181,6 @@ class FriendController:
     id_friend_rec = []
     if not recommended_friends:
       return { "data": [] }, 200
-    print(recommended_friends)
     for key, number in recommended_friends.items():
       id_friend_rec.append(key)
 
@@ -144,8 +188,6 @@ class FriendController:
 
     for fr in response:
       fr["message"] = str(recommended_friends[fr["id_user"]]) + " amigo(s) en común"
-
-    print(response)
       
     # response = [user for user in users if user["id_user"] in recommended_friends]
     return { "data": response }, 200

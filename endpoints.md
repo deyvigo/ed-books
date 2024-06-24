@@ -12,19 +12,17 @@
 
 - `[ ]` POST /book
 
-- `[ ]` GET /friends #TODO response a json with names of friends
+- `[ ]` GET /list/friends
 
-- `[ ]` GET /requests/received #TODO error
+- `[ ]` GET /requests/received received request friends
 
-- `[ ]` GET /requests/sent #TODO error
+- `[ ]` GET /requests/sent sent request friends
 
-- `[ ]` POST /friends/requests 
+- `[ ]` POST /friends/requests send a friend request
 
-- `[ ]` POST /friends this route update a request frien status
+- `[ ]` PUT /send/request/friends update a friend request status
 
-- `[ ]` GET /list #TODO the function of controller doesn't exists 
-
-- `[ ]` GET /list/request # the function of model doesn't exists
+- `[ ]` DELETE /send/request/friends delete a friend request (rejected)
 
 - `[ ]` GET /friends/recommended/<id_user>
 
