@@ -1,10 +1,10 @@
 meta {
-  name: update a friend request status
+  name: delete a friend request (rechazar)
   type: http
-  seq: 10
+  seq: 18
 }
 
-put {
+delete {
   url: {{BACKEND_URL}}/update/request/friends
   body: json
   auth: none
@@ -12,6 +12,6 @@ put {
 
 body:json {
   {
-    "id_friend": 7
+    "id_friend": 8
   }
 }

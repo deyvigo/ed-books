@@ -5,14 +5,14 @@ meta {
 }
 
 post {
-  url: {{BACKEND_URL}}/friends/requests
+  url: {{BACKEND_URL}}/send/friends/requests
   body: json
   auth: none
 }
 
 body:json {
   {
-    "id_applicant": 2,
-    "id_receiver": 10
+    "id_applicant": 6,
+    "id_receiver": 5
   }
 }
