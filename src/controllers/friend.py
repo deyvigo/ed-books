@@ -55,7 +55,7 @@ class FriendController:
     list_friends = ListaDoble()
 
     if id is None:
-            return {"error": "id es requerido"}, 400
+      return {"error": "id es requerido"}, 400
 
     for friend in friends:
       if (str(friend.get("id_applicant")) == str(id) or str(friend.get("id_receiver")) == str(id)) and str(friend.get("is_accept")) == str(1):
@@ -100,6 +100,7 @@ class FriendController:
             list_requests.append({"request_id":request_id})
     data=list_requests.viewData() #TODO
     return data
+  
   def get_list_friends_requests(id):
     response = FriendModel().get_list_friends_requests(id)
     return response

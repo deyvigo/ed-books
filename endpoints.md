@@ -18,11 +18,11 @@
 
 - `[ ]` GET /requests/sent #TODO error
 
-- `[ ]` POST /friends/requests 
+- `[ ]` POST /friends/requests
 
-- `[ ]` POST /friends this route update a request frien status
+- `[ ]` POST /friends this route update a request friend status
 
-- `[ ]` GET /list #TODO the function of controller doesn't exists 
+- `[ ]` GET /list #TODO the function of controller doesn't exists
 
 - `[ ]` GET /list/request # the function of model doesn't exists
 
@@ -37,3 +37,11 @@
 - `[ ]` GET /user
 
 - `[ ]` POST /user
+
+- `[ ]` GET /posts/user
+
+- `[ ]` GET /posts/book
+
+- `[ ]` POST /post/create
+
+- `[ ]` POST /post/delete
