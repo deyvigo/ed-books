@@ -5,7 +5,7 @@ from structures.ListaEnlazada import ListaEnlazada as LE
 from models import UserModel, FriendModel, BookUserModel, BookModel
 from entity import Friend
 from structures.GraphFriends import GraphFriends, ListaEnlazada, Nodo
-from structures.BookUser.GraphBooksUsers import GraphBooksUses
+from structures.BookUser.GraphBooksUsers import GraphBooksUsers
 
 class FriendController:
   @staticmethod
@@ -193,7 +193,7 @@ class FriendController:
     # recommended by books liked
     books_users = BookUserModel().get_all_likes_book()[0]["data"]
     books = BookModel().get_all_book()["data"]
-    graph_books_users = GraphBooksUses()
+    graph_books_users = GraphBooksUsers()
 
     map_books = {}
     for book in books:

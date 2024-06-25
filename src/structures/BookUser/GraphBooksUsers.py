@@ -1,6 +1,6 @@
 from typing import Dict, Set, Tuple
 
-class GraphBooksUses:
+class GraphBooksUsers:
   def __init__(self) -> None:
     self.adjacency_list: Dict[str, list[str]] = {}
 
