@@ -38,11 +38,9 @@ class BookUserController:
     lista_all_likes = ListaEnlazada()
 
     for al in all_likes:
-      print(al)
       lista_all_likes.append(al)
 
     id_like_to_delete = lista_all_likes.search(id_user, id_book)
-    print("Holaaaaa", id_like_to_delete)
     
     if id_like_to_delete == None:
       return { "error": "No se ha encontrado un registro para eliminar" }, 404

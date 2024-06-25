@@ -1,5 +1,4 @@
 from typing import Dict
-from entity import User
 
 class GraphFriends:
   def __init__(self) -> None:

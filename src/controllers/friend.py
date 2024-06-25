@@ -2,9 +2,10 @@ from flask import request
 from structures.listaEnlazadaDoble import ListaDoble
 from structures.ListaEnlazada import ListaEnlazada as LE
 
-from models import UserModel, FriendModel
+from models import UserModel, FriendModel, BookUserModel, BookModel
 from entity import Friend
 from structures.GraphFriends import GraphFriends, ListaEnlazada, Nodo
+from structures.BookUser.GraphBooksUsers import GraphBooksUses
 
 class FriendController:
   @staticmethod
@@ -187,6 +188,44 @@ class FriendController:
 
     for fr in response:
       fr["message"] = str(recommended_friends[fr["id_user"]]) + " amigo(s) en común"
-      
+
+
+    # recommended by books liked
+    books_users = BookUserModel().get_all_likes_book()[0]["data"]
+    books = BookModel().get_all_book()["data"]
+    graph_books_users = GraphBooksUses()
+
+    map_books = {}
+    for book in books:
+      map_books[str(book["id_book"])] = book
+    
+    for book in books:
+      graph_books_users.add_node(str("book_" + str(book["id_book"])))
+    for user in users:
+      graph_books_users.add_node(str("user_" + str(user["id_user"])))
+
+    for b_u in books_users:
+      graph_books_users.add_edge(str("book_" + str(b_u["id_book"])), str("user_" + str(b_u["id_user"])))
+
+    rec_users = []
+    recomm_b_u = graph_books_users.recomended_friend_by_book_liked_user(str("user_" + str(id_user)))
+    for key, number in recomm_b_u:
+      key = key.split("_")[-1]
+      number = number.split("_")[-1]
+      if [key, number] not in rec_users:
+        rec_users.append(key)
+
+    for user in users:
+      if user not in response and str(user["id_user"]) in rec_users:
+        response.append(user)
+
+    for res in response:
+      if "message" not in res:
+        for key, number in recomm_b_u:
+          if str(res["id_user"]) == key.split("_")[-1]:
+            n = number.split("_")[-1]
+            book_name = map_books[n]["name"]
+            res["message"] = f"Le gusta {book_name}"
+
     # response = [user for user in users if user["id_user"] in recommended_friends]
     return { "data": response }, 200
