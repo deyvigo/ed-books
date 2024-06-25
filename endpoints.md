@@ -35,3 +35,9 @@
 - `[ ]` GET /user
 
 - `[ ]` POST /user
+
+- `[ ]` POST /like/book
+
+- `[ ]` GET /likes/all
+
+- `[ ]` DELETE /unlike/book
