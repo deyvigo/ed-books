@@ -1,0 +1,18 @@
+meta {
+  name: unlike book
+  type: http
+  seq: 21
+}
+
+delete {
+  url: {{BACKEND_URL}}/unlike/book
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id_user": 1,
+    "id_book": 3
+  }
+}

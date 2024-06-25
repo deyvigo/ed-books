@@ -94,7 +94,6 @@ class FriendController:
       map_users[user["id_user"]] = user
 
     for req in requests:
-      print(req)
       if str(req.get("id_receiver")) == str(id) and str(req.get("is_accept")) == str(0):
         request_id = req.get("id_applicant")
         list_requests.append(req)

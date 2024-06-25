@@ -18,11 +18,11 @@
 
 - `[ ]` GET /requests/sent sent request friends
 
-- `[ ]` POST /friends/requests send a friend request
+- `[ ]` POST /send/friends/requests send a friend request
 
-- `[ ]` PUT /send/request/friends update a friend request status
+- `[ ]` PUT /update/request/friends update a friend request status
 
-- `[ ]` DELETE /send/request/friends delete a friend request (rejected)
+- `[ ]` DELETE /update/request/friends delete a friend request (rejected)
 
 - `[ ]` GET /friends/recommended/<id_user>
 
