@@ -38,7 +38,7 @@
 
 - `[ ]` POST /user
 
-- `[ ]` GET /posts/user
+- `[ ]` GET /posts/user #TODO implementar logica para buscar dentro de id_post_user
 
 - `[ ]` GET /posts/book
 

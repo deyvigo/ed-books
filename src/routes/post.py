@@ -9,13 +9,13 @@ def get_posts_user():
 
 @post_blueprint.route('/posts/book', methods=['GET'])
 def get_posts_book():
-   return PostController.get_all_posts_books()
+   return PostController.get_all_posts_book()
 
 @post_blueprint.route('/post/create', methods=['POST'])
 def delete_post():
    return PostController.post_one_post()
 
-@post_blueprint.route('/post/delete', methods=['POST'])
+@post_blueprint.route('/post/delete', methods=['DELETE'])
 def create_post():
    return PostController.delete_post()
 
