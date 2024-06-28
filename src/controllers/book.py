@@ -6,6 +6,11 @@ class BookController:
   def get_all_book():
     response = BookModel().get_all_book()
     return response
+  
+  @staticmethod
+  def get_one_book(id):
+    response = BookModel().get_one_book(id)
+    return response
 
   @staticmethod
   def regist_one_book():

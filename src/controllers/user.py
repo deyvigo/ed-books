@@ -9,6 +9,11 @@ class UserController:
   def get_all_user():
     response = UserModel().get_all_user() # () en UserModel porque tiene un constructor
     return response
+  
+  @staticmethod
+  def get_one_user(id):
+    response = UserModel().get_one_user(id)
+    return response
 
   @staticmethod
   def regist_one_user():

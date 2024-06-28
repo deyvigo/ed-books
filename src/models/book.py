@@ -17,6 +17,22 @@ class BookModel:
       return { "data": response }
     except:
       return { "error": "Error al consultar la tabla book" }
+  
+  def get_one_book(self, id):
+    cursor = self.db.cursor()
+    try:
+      query = """
+        SELECT b.id_book, b.id_author, b.description, b.url_img, b.name AS name_book, 
+        a.name AS name_author 
+        FROM book b 
+        JOIN author a ON b.id_author = a.id_author
+        WHERE id_book = %s;
+      """
+      cursor.execute(query, (id))
+      response = cursor.fetchone()
+      return { "data": response}
+    except:
+      return { "error": "Error al consultar la tabla book" }
 
   def post_one_book(self, name, id_author, description, url_img):
     cursor = self.db.cursor()
