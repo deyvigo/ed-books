@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_jwt_extended import JWTManager
 from config import config
-from routes import login_blueprint, user_blueprint, book_blueprint, author_blueprint, genre_blueprint, book_genre_blueprint, friend_blueprint
+from routes import login_blueprint, user_blueprint, book_blueprint, author_blueprint, genre_blueprint, book_genre_blueprint, friend_blueprint, post_blueprint
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 
@@ -18,6 +18,7 @@ app.register_blueprint(genre_blueprint)
 app.register_blueprint(book_genre_blueprint)
 app.register_blueprint(friend_blueprint)
 app.register_blueprint(login_blueprint)
+app.register_blueprint(post_blueprint)
 
 # @app.route("/", methods = ["GET"])
 # def hello ():
