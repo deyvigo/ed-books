@@ -1,0 +1,15 @@
+meta {
+  name: get request friends received by id
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{BACKEND_URL}}/requests/received?id=5
+  body: none
+  auth: none
+}
+
+params:query {
+  id: 5
+}

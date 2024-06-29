@@ -1,0 +1,18 @@
+meta {
+  name: like one book
+  type: http
+  seq: 19
+}
+
+post {
+  url: {{BACKEND_URL}}/like/book
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id_user": 11,
+    "id_book": 20
+  }
+}

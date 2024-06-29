@@ -1,15 +1,15 @@
 meta {
-  name: get friends
+  name: get list friends by id
   type: http
   seq: 6
 }
 
 get {
-  url: {{BACKEND_URL}}/friends?id=2
+  url: {{BACKEND_URL}}/list/friends?id=1
   body: none
   auth: none
 }
 
 params:query {
-  id: 2
+  id: 1
 }

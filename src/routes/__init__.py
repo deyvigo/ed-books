@@ -6,3 +6,4 @@ from routes.book_genre import book_genre_blueprint
 from routes.friend import friend_blueprint
 from routes.login import login_blueprint
 from routes.post import post_blueprint
+from routes.book_user import book_user_blueprint
