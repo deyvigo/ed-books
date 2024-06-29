@@ -6,3 +6,4 @@ from models.book_genre import *
 from models.friend import *
 from models.post import *
 from models.book_user import *
+from models.comment import *
