@@ -28,6 +28,16 @@ class UserModel:
       return { "data": response}
     except:
       return { "error": "Error al consultar la tabla user" }
+  
+  def get_one_user_by_id(self, id):
+    cursor = self.db.cursor()
+    try:
+      query = "SELECT * FROM user WHERE id_user = %s;"
+      cursor.execute(query, (id,))
+      response = cursor.fetchone()
+      return { "data": response}
+    except:
+      return { "error": "Error al consultar la tabla user" }
 
   def post_one_user(self, username, password, name):
     cursor = self.db.cursor()
