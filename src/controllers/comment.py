@@ -49,6 +49,7 @@ class CommentController:
         id_user_comment=data.get("id_user_comment")
         id_post=data.get("id_post")
         comment=data.get("comment")
+        print(id_user_comment, id_post, comment)
         response = CommentModel().post_one_comment(id_post,id_user_comment,comment)
         return response
     

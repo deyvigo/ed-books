@@ -25,8 +25,8 @@ class CommentModel:
             cursor.execute(query_insert, (id_post, id_user_comment, comment))
             self.db.commit()
             return { "message": "Comentario creado exitosamente" }, 200
-        except:
-            return { "error": "Error al crear comentario" }, 500
+        except Exception as e:
+            return { "error": f"Error al crear comentario {e}" }, 500
     
     def delete_comment(self,id_comment):
         cursor = self.db.cursor()

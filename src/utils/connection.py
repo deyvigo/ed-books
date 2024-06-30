@@ -124,12 +124,12 @@ class Database:
           id_comment     int auto_increment
             primary key,
           id_post        int          not null,
-          id_user_coment int          not null,
+          id_user_comment int          not null,
           comment        varchar(500) not null,
           constraint comment_post_id_post_fk
             foreign key (id_post) references post (id_post),
           constraint comment_user_id_user_fk
-            foreign key (id_user_coment) references user (id_user)
+            foreign key (id_user_comment) references user (id_user)
         );
       """)
       cursor.execute("""
