@@ -10,6 +10,8 @@
 
 - `[ ]` GET /book
 
+- `[ ]` GET /book/<id>
+
 - `[ ]` POST /book
 
 - `[ ]` GET /list/friends
@@ -42,7 +44,13 @@
 
 - `[ ]` GET /user
 
+- `[ ]` GET /user/<id>
+
 - `[ ]` POST /user
+
+- `[ ]` PUT /user/<id>
+
+- `[ ]` DELETE /user/<id>
 
 - `[ ]` GET /posts/user
 
