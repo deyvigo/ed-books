@@ -5,7 +5,15 @@ meta {
 }
 
 post {
-  url: /post/create
-  body: none
+  url: {{BACKEND_URL}}/post/create
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "id_user_post": 7,
+    "id_book": 70,
+    "content": "No logré entender el libro. Era muy pesado para mí."
+  }
 }
