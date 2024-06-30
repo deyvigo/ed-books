@@ -11,8 +11,8 @@ class UserController:
     return response
   
   @staticmethod
-  def get_one_user(id):
-    response = UserModel().get_one_user(id)
+  def get_one_user_by_id(id):
+    response = UserModel().get_one_user_by_id(id)
     return response
 
   @staticmethod
@@ -39,6 +39,11 @@ class UserController:
 
     if not data:
       return { "error": "Datos no enviados" }, 400
+
+    user = UserModel().get_one_user_by_id(id).get('data')
+
+    if not user:
+      return { "error": "Usuario no encontrado" }, 404
 
     hash_pass = bcrypt.generate_password_hash(data.get('password'), 10).decode('utf-8')
 
