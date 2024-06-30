@@ -1,6 +1,9 @@
 from flask import request
 
+from models import UserModel 
 from models import PostModel
+from models import CommentModel
+from controllers.comment import CommentController
 from structures.ListaEnlazada import ListaEnlazada
 
 class PostController:
@@ -9,6 +12,10 @@ class PostController:
         id = request.args.get('id')
         post_user= ListaEnlazada()
         data=PostModel().get_all_post_table()
+
+        users = UserModel().get_all_user()["data"]
+        comments = CommentController.get_all_comments()["data"]
+
         data_post=data['data']
         band=True
 
@@ -16,7 +23,15 @@ class PostController:
             return {"error": "id son requeridos"}, 400
         for post in data_post:
             if str(post.get("id_user_post"))== str(id):
-                post_user.append(post);
+                for user in users:
+                    if(post["id_user_post"]==user["id_user"]):
+                        post["name"]=user["name"]
+                        continue
+                post["comments"]=[]
+                for comment in comments:
+                    if(post["id_post"]== comment["id_post"]):
+                        post["comments"].append(comment)
+                post_user.append(post)
                 band=False
         response = post_user.viewData()
 
@@ -29,6 +44,10 @@ class PostController:
         id = request.args.get('id')
         post_user= ListaEnlazada()
         data=PostModel().get_all_post_table()
+
+        users = UserModel().get_all_user()["data"]
+        comments = CommentController.get_all_comments()["data"]
+
         data_post=data['data']
         band=True
 
@@ -36,7 +55,15 @@ class PostController:
             return {"error": "id son requeridos"}, 400
         for post in data_post:
             if str(post.get("id_book"))== str(id):
-                post_user.append(post);
+                for user in users:
+                    if(post["id_user_post"]==user["id_user"]):
+                        post["name"]=user["name"]
+                        continue
+                post["comments"]=[]
+                for comment in comments:
+                    if(post["id_post"]== comment["id_post"]):
+                        post["comments"].append(comment)
+                post_user.append(post)
                 band=False
         response = post_user.viewData()
 

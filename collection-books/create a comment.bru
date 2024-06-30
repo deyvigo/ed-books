@@ -1,0 +1,19 @@
+meta {
+  name: create a comment
+  type: http
+  seq: 22
+}
+
+post {
+  url: {{BACKEND_URL}}/comment/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id_user_comment": 4,
+    "id_post": 1,
+    "comment": "Kafka es único."
+  }
+}

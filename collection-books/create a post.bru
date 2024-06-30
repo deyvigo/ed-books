@@ -1,0 +1,19 @@
+meta {
+  name: create a post
+  type: http
+  seq: 23
+}
+
+post {
+  url: {{BACKEND_URL}}/post/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id_user_post": 7,
+    "id_book": 70,
+    "content": "No logré entender el libro. Era muy pesado para mí."
+  }
+}

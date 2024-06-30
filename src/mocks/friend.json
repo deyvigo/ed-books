@@ -40,6 +40,21 @@
     "is_accept": 0
   },
   {
+    "id_applicant": 1,
+    "id_receiver": 5,
+    "is_accept": 0
+  },
+  {
+    "id_applicant": 7,
+    "id_receiver": 5,
+    "is_accept": 0
+  },
+  {
+    "id_applicant": 10,
+    "id_receiver": 5,
+    "is_accept": 0
+  },
+  {
     "id_applicant": 4,
     "id_receiver": 5,
     "is_accept": 0

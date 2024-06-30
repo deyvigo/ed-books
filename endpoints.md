@@ -52,7 +52,7 @@
 
 - `[ ]` DELETE /user/<id>
 
-- `[ ]` GET /posts/user #TODO implementar logica para buscar dentro de id_post_user
+- `[ ]` GET /posts/user
 
 - `[ ]` GET /posts/book
 
@@ -65,3 +65,11 @@
 - `[ ]` GET /likes/all
 
 - `[ ]` DELETE /unlike/book
+
+- `[ ]` GET /comments/user
+
+- `[ ]` GET /comments/post
+
+- `[ ]` POST /comment/create
+
+- `[ ]` POST /comment/delete
