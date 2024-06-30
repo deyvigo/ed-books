@@ -40,8 +40,8 @@ class BookUserController:
     for al in all_likes:
       lista_all_likes.append(al)
 
-    id_like_to_delete = lista_all_likes.search(id_user, id_book)
-    
+    id_like_to_delete = lista_all_likes.search(int(id_user), int(id_book))
+
     if id_like_to_delete == None:
       return { "error": "No se ha encontrado un registro para eliminar" }, 404
 

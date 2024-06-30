@@ -22,10 +22,8 @@ class BookModel:
     cursor = self.db.cursor()
     try:
       query = """
-        SELECT b.id_book, b.id_author, b.description, b.url_img, b.name AS name_book, 
-        a.name AS name_author 
-        FROM book b 
-        JOIN author a ON b.id_author = a.id_author
+        SELECT b.id_book, b.id_author, b.description, b.url_img, b.name b. AS name_book
+        FROM book b
         WHERE id_book = %s;
       """
       cursor.execute(query, (id))
