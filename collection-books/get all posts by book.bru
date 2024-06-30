@@ -1,0 +1,15 @@
+meta {
+  name: get all posts by book
+  type: http
+  seq: 24
+}
+
+get {
+  url: {{BACKEND_URL}}/posts/book?id=70
+  body: none
+  auth: none
+}
+
+params:query {
+  id: 70
+}
