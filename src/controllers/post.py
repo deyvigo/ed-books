@@ -1,7 +1,7 @@
 import copy
 from flask import request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from models import UserModel, PostModel, FriendModel, CommentModel
+from models import UserModel, PostModel, FriendModel, CommentModel, BookModel
 from controllers.comment import CommentController
 from structures.ListaEnlazada import ListaEnlazada
 from structures.FeedPosts.ListaEnlazada import ListaEnlazada as Le
@@ -110,7 +110,9 @@ class PostController:
         friends = FriendModel().get_all_friend()["data"]
         users = UserModel().get_all_user()["data"]
         comments = CommentModel().get_all_comment_table()["data"]
+        books = BookModel().get_all_book()["data"]
         
+        map_books = { book["id_book"] : book for book in books }
         map_users = { user["id_user"] : user for user in users }
         map_comments = {}
         map_posts = {}
@@ -142,6 +144,7 @@ class PostController:
                 to_append = map_posts[friend]
                 for append in to_append:
                     append["user"] = map_users[friend]
+                    append["book"] = map_books[append["id_book"]]
                     if append["id_post"] in map_comments:
                         comments = map_comments[append["id_post"]]
                         for comment in comments:

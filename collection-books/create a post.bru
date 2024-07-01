@@ -7,13 +7,17 @@ meta {
 post {
   url: {{BACKEND_URL}}/post/create
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
 }
 
 body:json {
   {
-    "id_user_post": 7,
-    "id_book": 70,
+    "id_user_post": 2,
+    "id_book": 40,
     "content": "No logré entender el libro. Era muy pesado para mí."
   }
 }

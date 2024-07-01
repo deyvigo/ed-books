@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: {{}}/posts/user
+  url: {{BACKEND_URL}}/posts/user
   body: none
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTc5OTQ0MSwianRpIjoiYTNmYzI2YTgtNjVhZi00NjIwLTgyYmUtYjI2MTViMTEwYTdlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImFzbWl0aCIsImlkX3VzZXIiOjIsIm5hbWUiOiJBbGljZSBTbWl0aCJ9LCJuYmYiOjE3MTk3OTk0NDEsImNzcmYiOiIzNWQyOGVmNC05YzdmLTQ5NzItODU3MC0zYTk5ZGEzZDk1MGYiLCJleHAiOjE3MTk4MDAzNDF9.VRzxi3hpokch7bi_wZnq4fw0UqV8Vpt521QM1KX-LqM
 }

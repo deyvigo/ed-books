@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: {{}}/post/friends
+  url: {{BACKEND_URL}}/post/friends
   body: none
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTgyNDk5MSwianRpIjoiZmY4YjY0ZDAtZDQ3OC00YjE4LTkwZjEtYTE1ZGFkMTI1MTcxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImFzbWl0aCIsImlkX3VzZXIiOjIsIm5hbWUiOiJBbGljZSBTbWl0aCJ9LCJuYmYiOjE3MTk4MjQ5OTEsImNzcmYiOiJjNjBiYjRjYi03MmEzLTRmZWUtOTIxNC00NmFiMmI3ZTQ1MGQiLCJleHAiOjE3MTk4MjU4OTF9.c4bXx5Qm0O89G_dEmMOnamyH4K9i6EjkMzhCvHMXjnw
 }
