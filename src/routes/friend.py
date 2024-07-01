@@ -30,6 +30,6 @@ def update_friend_status():
 #    id = request.args.get('id')
 #    return FriendController.get_list_friends_requests(id)
 
-@friend_blueprint.route('/friends/recommended/<id_user>', methods=['GET'])
-def get_recommended_friends(id_user):
-  return FriendController.get_recomended_friends(id_user)
+@friend_blueprint.route('/friends/recommended', methods=['GET'])
+def get_recommended_friends():
+  return FriendController.get_recomended_friends()

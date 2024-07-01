@@ -1,6 +1,7 @@
 from flask import request
 from structures.listaEnlazadaDoble import ListaDoble
 from structures.ListaEnlazada import ListaEnlazada as LE
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from models import UserModel, FriendModel, BookUserModel, BookModel
 from entity import Friend
@@ -150,7 +151,10 @@ class FriendController:
     return response
   
   @staticmethod
-  def get_recomended_friends(id_user):
+  @jwt_required()
+  def get_recomended_friends():
+    user = get_jwt_identity()
+    id_user = user["id_user"]
     users = UserModel().get_all_user().get("data")
     friends = FriendModel().get_all_friends_table()["data"]
 
