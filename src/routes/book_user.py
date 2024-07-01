@@ -12,6 +12,10 @@ def like():
 def all_likes_books():
   return BookUserController.get_all_likes_books()
 
+@book_user_blueprint.route("/liked/books", methods=["GET"])
+def all_liked_books():
+  return BookUserController.get_all_liked_books()
+
 @book_user_blueprint.route("/unlike/book", methods=["DELETE"])
 def unlike_book():
   return BookUserController.unlike_one_book()
