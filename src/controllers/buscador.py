@@ -20,7 +20,7 @@ class BuscadorController:
     map_items = {}
 
     for book in books:
-      book["link"] = f"main/libros/{book['id_book']}"
+      book["link"] = f"/main/libros/{book['id_book']}"
       map_items[book["name"].lower()] = book
 
     for user in users:
