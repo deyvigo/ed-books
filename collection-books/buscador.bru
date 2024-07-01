@@ -1,0 +1,17 @@
+meta {
+  name: buscador
+  type: http
+  seq: 26
+}
+
+post {
+  url: {{BACKEND_URL}}/search
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "prefix": "MI"
+  }
+}
