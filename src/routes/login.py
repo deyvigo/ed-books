@@ -11,7 +11,11 @@ def login():
   if user.get('error'):
     return {"error": user.get('error')}, status_code
   
-  access_token = create_access_token(identity={"username" : user.get('username')})
+  access_token = create_access_token(identity={
+    "username" : user.get('username'),
+    "id_user" : user.get('id_user'),
+    "name" : user.get('name'),
+  })
   user['access_token'] = access_token
 
   return user , status_code

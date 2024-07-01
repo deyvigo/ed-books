@@ -28,7 +28,7 @@ class LoginController:
       return {"error": "Contraseña incorrecta"}, 400
 
     return {
-        "id": user.get('id_user'),
+        "id_user": user.get('id_user'),
         "username": user.get('username'),
         "name": user.get('name')
     }, 200
