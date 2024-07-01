@@ -19,3 +19,7 @@ def delete_post():
 def create_post():
    return PostController.delete_post()
 
+@post_blueprint.route("/post/friends", methods=['GET'])
+def get_posts_friends():
+   return PostController.get_all_posts_friends()
+

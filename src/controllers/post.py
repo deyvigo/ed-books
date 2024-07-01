@@ -1,8 +1,11 @@
+import copy
 from flask import request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from models import UserModel, PostModel
+from models import UserModel, PostModel, FriendModel, CommentModel
 from controllers.comment import CommentController
 from structures.ListaEnlazada import ListaEnlazada
+from structures.FeedPosts.ListaEnlazada import ListaEnlazada as Le
+from entity.Friend import Friend
 
 class PostController:
     @staticmethod
@@ -97,3 +100,57 @@ class PostController:
         id = request.args.get('id')
         response = PostModel().delete_post(id)
         return response
+
+    @staticmethod
+    @jwt_required()
+    def get_all_posts_friends():
+        user = get_jwt_identity()
+        id = user["id_user"]
+        posts = PostModel().get_all_post_table()["data"]
+        friends = FriendModel().get_all_friend()["data"]
+        users = UserModel().get_all_user()["data"]
+        comments = CommentModel().get_all_comment_table()["data"]
+        
+        map_users = { user["id_user"] : user for user in users }
+        map_comments = {}
+        map_posts = {}
+        
+        for post in posts:
+            if post["id_user_post"] not in map_posts:
+                map_posts[post["id_user_post"]] = []
+                map_posts[post["id_user_post"]].append(post)
+            else:
+                map_posts[post["id_user_post"]].append(post)
+        
+        for comment in comments:
+            if comment["id_post"] not in map_comments:
+                map_comments[comment["id_post"]] = []
+                map_comments[comment["id_post"]].append(comment)
+            else:
+                map_comments[comment["id_post"]].append(comment)
+        
+        friends_list = Le()
+        for friend in friends:
+            friends_list.append(Friend(friend["id_friend"], friend["id_applicant"], friend["id_receiver"], friend["is_accept"]))
+        
+        friends_of_user = friends_list.search(int(id))
+        
+        response = []
+        
+        for friend in friends_of_user:
+            if friend in map_posts:
+                to_append = map_posts[friend]
+                for append in to_append:
+                    append["user"] = map_users[friend]
+                    if append["id_post"] in map_comments:
+                        comments = map_comments[append["id_post"]]
+                        for comment in comments:
+                            comment["user"] = map_users[comment["id_user_comment"]]
+                        append["comments"] = map_comments[append["id_post"]]
+                    else:
+                        append["comments"] = []
+                response.append(to_append)
+        
+
+        return response
+			
